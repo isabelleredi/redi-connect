@@ -1,24 +1,24 @@
-import { ActionsObservable, ofType } from 'redux-observable';
-import { map, switchMap, tap, catchError } from 'rxjs/operators';
-import { from, concat, of } from 'rxjs';
-import { API_URL } from '../../config/config';
-import { http } from '../../services/http/http';
+import { ActionsObservable, ofType } from "redux-observable";
+import { map, switchMap, tap, catchError } from "rxjs/operators";
+import { from, concat, of } from "rxjs";
+import { API_URL } from "../../config/config";
+import { http } from "../../services/http/http";
 import {
   mentoringSessionsCreateSuccess,
   mentoringSessionsFetchSuccess,
   mentoringSessionsCreateError,
-  mentoringSessionsFetchStart,
-} from './actions';
+  mentoringSessionsFetchStart
+} from "./actions";
 import {
   MentoringSessionsActions,
   MentoringSessionsActionType,
-  MentoringSessionsCreateStartAction,
-} from './types';
-import { profileFetchStart } from '../user/actions';
-import { profilesFetchOneStart } from '../profiles/actions';
+  MentoringSessionsCreateStartAction
+} from "./types";
+import { profileFetchStart } from "../user/actions";
+import { profilesFetchOneStart } from "../profiles/actions";
 
 const fetchFilter = {
-  include: ['mentee', 'mentor'],
+  include: ["mentee", "mentor"]
 };
 
 export const mentoringSessionsFetchEpic = (
@@ -41,8 +41,8 @@ export const mentoringSessionsCreateEpic = (action$: ActionsObservable<any>) =>
     switchMap(action => {
       const request = from(
         http(`${API_URL}/redMentoringSessions`, {
-          method: 'post',
-          data: action.payload,
+          method: "post",
+          data: action.payload
         })
       ).pipe(
         map(resp => resp.data),
@@ -58,7 +58,7 @@ export const mentoringSessionsCreateEpic = (action$: ActionsObservable<any>) =>
         of(profileFetchStart()),
         // This one is a terrible idea for the same reason explained in
         // matches/epics.ts
-        of(profilesFetchOneStart(successAction.payload.menteeId)),
+        of(profilesFetchOneStart(successAction.payload.menteeId))
       );
     })
 
@@ -68,5 +68,5 @@ export const mentoringSessionsCreateEpic = (action$: ActionsObservable<any>) =>
 
 export const mentoringSessionsEpics = {
   mentoringSessionsFetchEpic,
-  mentoringSessionsCreateEpic,
+  mentoringSessionsCreateEpic
 };
