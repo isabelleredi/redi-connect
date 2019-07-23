@@ -1,10 +1,10 @@
-import { Observable, from, of } from 'rxjs';
-import { map, switchMap, filter, tap, catchError } from 'rxjs/operators';
-import { ofType, ActionsObservable } from 'redux-observable';
-import { UserActions, UserActionType, ProfileSaveStartAction } from './types';
-import { fetchSaveRedProfile, saveRedProfile } from '../../services/api/api';
-import { getAccessToken, isLoggedIn } from '../../services/auth/auth';
-import { RedProfile } from '../../types/RedProfile';
+import { Observable, from, of } from "rxjs";
+import { map, switchMap, filter, tap, catchError } from "rxjs/operators";
+import { ofType, ActionsObservable } from "redux-observable";
+import { UserActions, UserActionType, ProfileSaveStartAction } from "./types";
+import { fetchSaveRedProfile, saveRedProfile } from "../../services/api/api";
+import { getAccessToken, isLoggedIn } from "../../services/auth/auth";
+import { RedProfile } from "../../types/RedProfile";
 
 const profileFetchEpic = (action$: ActionsObservable<UserActions>) =>
   action$.pipe(
@@ -13,15 +13,15 @@ const profileFetchEpic = (action$: ActionsObservable<UserActions>) =>
     filter(() => isLoggedIn()),
     switchMap(async () => {
       try {
-        const res = await fetchSaveRedProfile(getAccessToken())
-        return res
+        const res = await fetchSaveRedProfile(getAccessToken());
+        return res;
       } catch (err) {
-        return of(err)
+        return of(err);
       }
     }),
     map(profile => ({
       type: UserActionType.USER_PROFILE_FETCH_SUCCESS,
-      payload: profile,
+      payload: profile
     }))
   );
 
@@ -31,11 +31,11 @@ const profileSaveEpic = (action$: ActionsObservable<ProfileSaveStartAction>) =>
     switchMap(action => saveRedProfile(action.payload)),
     map(profile => ({
       type: UserActionType.USER_PROFILE_SAVE_SUCCESS,
-      payload: profile,
+      payload: profile
     }))
   );
 
 export const userEpics = {
   profileFetchEpic,
-  profileSaveEpic,
+  profileSaveEpic
 };
