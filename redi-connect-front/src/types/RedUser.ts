@@ -1,4 +1,4 @@
-export type RedUser = {
+export interface RedUser {
   email: string;
   id: string;
-};
+}

@@ -15,8 +15,8 @@ export const SignUpComplete: FunctionComponent<
   RouteComponentProps<RouteParams>
 > = ({
   match: {
-    params: { type },
-  },
+    params: { type }
+  }
 }) => {
   // TODO: Replace 'any' with whatever is TS-appropriate
   const Comp: any = (props: any) => <Link {...props} to="/app/dashboard" />;

@@ -21,14 +21,14 @@ const styles = (theme: Theme) =>
   createStyles({
     button: {
       marginTop: theme.spacing.unit * 2,
-      marginBottom: theme.spacing.unit * 2,
-    },
+      marginBottom: theme.spacing.unit * 2
+    }
   });
 
 export const Profile: FunctionComponent<RouteComponentProps<RouteParams>> = ({
   match: {
-    params: { profileId },
-  },
+    params: { profileId }
+  }
 }) => {
   return (
     <ProfileLoader profileId={profileId}>
@@ -45,7 +45,7 @@ export const Profile: FunctionComponent<RouteComponentProps<RouteParams>> = ({
 const ProfileLoader = connect((state: RootState) => ({
   loading: state.profiles.loading,
   profile: state.profiles.oneProfile,
-  currentUser: state.user.profile,
+  currentUser: state.user.profile
 }))((props: any) => {
   useEffect(() => {
     props.dispatch(profilesFetchOneStart(props.profileId));
@@ -53,17 +53,17 @@ const ProfileLoader = connect((state: RootState) => ({
   return props.children({
     loading: props.loading,
     profile: props.profile,
-    currentUser: props.currentUser,
+    currentUser: props.currentUser
   });
 });
 
-type PresentationProps = {
+interface PresentationProps {
   classes: {
     button: string;
   };
   profile: RedProfile | undefined;
   currentUser: RedProfile | undefined;
-};
+}
 
 const Presentation = withStyles(styles)(
   ({ classes, profile, currentUser }: PresentationProps) => {

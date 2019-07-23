@@ -6,7 +6,7 @@ import {
   Paper,
   TextField,
   Theme,
-  withStyles,
+  withStyles
 } from '@material-ui/core';
 import classNames from 'classnames';
 import { Formik, FormikActions, FormikProps } from 'formik';
@@ -19,14 +19,14 @@ const styles = (theme: Theme) =>
   createStyles({
     submitResult: {
       padding: theme.spacing.unit,
-      color: 'white',
+      color: 'white'
     },
     submitError: {
-      backgroundColor: theme.palette.error.main,
+      backgroundColor: theme.palette.error.main
     },
     submitSuccess: {
-      backgroundColor: theme.palette.primary.main,
-    },
+      backgroundColor: theme.palette.primary.main
+    }
   });
 
 interface ConnectionRequestFormValues {
@@ -36,7 +36,7 @@ interface ConnectionRequestFormValues {
 
 const initialValues = {
   applicationText: '',
-  dataSharingAccepted: false,
+  dataSharingAccepted: false
 };
 
 const validationSchema = Yup.object({
@@ -47,12 +47,12 @@ const validationSchema = Yup.object({
     .label('Application message'),
   dataSharingAccepted: Yup.boolean()
     .required()
-    .oneOf([true], 'Sharing profile data with your mentor is required'),
+    .oneOf([true], 'Sharing profile data with your mentor is required')
 });
 
-type Props = {
+interface Props {
   mentorId: string;
-};
+}
 
 export const ConnectionRequestForm = ({ mentorId }: Props) => {
   const [submitResult, setSubmitResult] = useState<FormSubmitResult>(
@@ -92,7 +92,7 @@ const Form = ({
   handleChange,
   handleSubmit,
   setFieldTouched,
-  isValid,
+  isValid
 }: FormikProps<ConnectionRequestFormValues> & {
   submitResult: FormSubmitResult;
 }) => {

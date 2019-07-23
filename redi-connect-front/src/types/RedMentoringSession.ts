@@ -1,11 +1,11 @@
 import { RedProfile } from './RedProfile';
 
-export type RedMentoringSession = {
+export interface RedMentoringSession {
   id?: string;
   mentor?: RedProfile;
   mentee?: RedProfile;
   mentorId?: string;
   menteeId?: string;
-  date: Date,
+  date: Date;
   minuteDuration: number;
-};
+}

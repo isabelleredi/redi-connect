@@ -17,12 +17,12 @@ import { SignUpFormValues, SignUpFormType } from '../Me';
 import {
   genders as formGenders,
   Languages as formLanguages,
-  AWS_PROFILE_AVATARS_BUCKET_BASE_URL,
+  AWS_PROFILE_AVATARS_BUCKET_BASE_URL
 } from '../../../../config/config';
 import { withStyles, Grid } from '@material-ui/core';
 import {
   withLoading,
-  withLoadingProgress,
+  withLoadingProgress
 } from '../../../../hooks/WithLoading';
 import { Avatar } from '../../../../components/Avatar';
 const ReactS3Uploader: any = require('react-s3-uploader');
@@ -50,17 +50,17 @@ export const validationSchema = Yup.object({
     .required()
     .min(100)
     .max(600)
-    .label('Personal description'),
+    .label('Personal description')
 });
 
 const styles = (theme: any) => ({
   margin: {
-    margin: '24px 0',
+    margin: '24px 0'
   },
   avatarImageFrame: {
     padding: '10px',
     borderRadius: '4px',
-    border: 'solid 2px #58adc4',
+    border: 'solid 2px #58adc4'
   },
   fileUploadLabel: {
     padding: '15px 20px',
@@ -68,8 +68,8 @@ const styles = (theme: any) => ({
     backgroundColor: '#58adc4',
     color: 'white',
     cursor: 'pointer',
-    display: 'inline-block',
-  },
+    display: 'inline-block'
+  }
 });
 
 const ITEM_HEIGHT = 48;
@@ -78,9 +78,9 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
+      width: 250
+    }
+  }
 };
 
 const Comp: any = (
@@ -98,7 +98,7 @@ const Comp: any = (
       languages,
       otherLanguages,
       personalDescription,
-      expectations,
+      expectations
     },
     errors,
     touched,
@@ -108,7 +108,7 @@ const Comp: any = (
     setFieldTouched,
     setFieldValue,
     classes,
-    type,
+    type
   } = props;
 
   const change = (name: any, e: any) => {
@@ -219,7 +219,7 @@ const Comp: any = (
           disabled={isSubmitting}
           inputProps={{
             name: 'gender',
-            id: 'gender',
+            id: 'gender'
           }}
         >
           <MenuItem value="">
@@ -307,14 +307,8 @@ const Comp: any = (
         id="personalDescription"
         name="personalDescription"
         label="Tell us a few words about yourself (this will be displayed on your profile)* (100-600 characters)"
-        error={
-          Boolean(errors.personalDescription)
-        }
-        helperText={
-          
-            errors.personalDescription
-            
-        }
+        error={Boolean(errors.personalDescription)}
+        helperText={errors.personalDescription}
         value={personalDescription}
         multiline
         fullWidth

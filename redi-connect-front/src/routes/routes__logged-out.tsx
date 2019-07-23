@@ -6,35 +6,35 @@ import { Login } from '../pages/front/login/Login';
 import { SignUpExisting } from '../pages/front/signup-existing/SignUpExisting';
 import { ResetPassword } from '../pages/front/signup-existing/ResetPassword';
 
-export const routes__loggedOut: Array<RouteDefinition> = [
+export const routes__loggedOut: RouteDefinition[] = [
   {
     path: '/front/login',
     component: Login,
-    exact: true,
+    exact: true
   },
   {
     path: '/front/signup/mentor',
     component: SignUpFormMentor,
-    exact: true,
+    exact: true
   },
   {
     path: '/front/signup/mentee',
     component: SignUpFormMentee,
-    exact: true,
+    exact: true
   },
   {
     path: '/front/signup/complete/:type',
     component: SignUpComplete,
-    exact: true,
+    exact: true
   },
   {
     path: '/front/signup/existing/:accessToken',
     component: SignUpExisting,
-    exact: true,
+    exact: true
   },
   {
     path: '/front/signup/existing-reset-password',
     component: ResetPassword,
-    exact: true,
-  },
-]
+    exact: true
+  }
+];

@@ -4,7 +4,7 @@ import { RedProfile } from '../types/RedProfile';
 import { Work as WorkIcon } from '@material-ui/icons';
 
 export const ProfileOccupation = ({
-  occupation,
+  occupation
 }: {
   occupation: RedProfile['mentor_occupation'];
 }) => {

@@ -12,40 +12,40 @@ import {
   createStyles,
   withStyles,
   Theme,
-  Paper,
+  Paper
 } from '@material-ui/core';
 import { RedProfile } from '../../../types/RedProfile';
 import { profileFetchStart } from '../../../redux/user/actions';
 
-type RouteParams = {
+interface RouteParams {
   accessToken: string;
-};
+}
 
 const styles = (theme: Theme) =>
   createStyles({
     paragraph: {
-      fontWeight: 300,
+      fontWeight: 300
     },
     paragraphBelowSubheader: {
       marginTop: '0.3em',
-      fontWeight: 300,
+      fontWeight: 300
     },
     subHeader: {
-      marginBottom: 0,
+      marginBottom: 0
     },
     error: {
-      backgroundColor: theme.palette.error.main,
-    },
+      backgroundColor: theme.palette.error.main
+    }
   });
 
-type Props = {
+interface Props {
   classes: {
     paragraph: string;
     paragraphBelowSubheader: string;
     subHeader: string;
     error: string;
   };
-};
+}
 
 export const SignUpExisting = withStyles(styles)(
   (props: RouteComponentProps<RouteParams> & Props) => {

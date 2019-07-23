@@ -2,16 +2,16 @@ import React from 'react';
 import { Chip } from '@material-ui/core';
 import {
   categoriesIdToColourMap,
-  categoriesIdToLabelMap,
+  categoriesIdToLabelMap
 } from '../config/config';
 import { ChipProps } from '@material-ui/core/Chip';
 
-type Props = {
+interface Props {
   categoryId: string;
   className?: string;
   style?: object;
   overrideBackgroundColour?: string;
-};
+}
 export const CategoryChip = ({
   categoryId,
   className,
@@ -26,7 +26,7 @@ export const CategoryChip = ({
       backgroundColor: overrideBackgroundColour
         ? overrideBackgroundColour
         : categoriesIdToColourMap[categoryId],
-      ...style,
+      ...style
     }}
     label={categoriesIdToLabelMap[categoryId]}
   />

@@ -8,7 +8,7 @@ import {
   Paper,
   Theme,
   createStyles,
-  withStyles,
+  withStyles
 } from '@material-ui/core';
 import { Lock as LockIcon, Person as PersonIcon } from '@material-ui/icons';
 import { Formik, FormikProps, FormikActions, FormikValues } from 'formik';
@@ -21,8 +21,8 @@ const styles = (theme: Theme) =>
     loginError: {
       padding: theme.spacing.unit,
       backgroundColor: theme.palette.error.main,
-      color: 'white',
-    },
+      color: 'white'
+    }
   });
 
 interface LoginFormValues {
@@ -32,7 +32,7 @@ interface LoginFormValues {
 
 const initialValues: LoginFormValues = {
   username: '',
-  password: '',
+  password: ''
 };
 
 const validationSchema = Yup.object({
@@ -44,7 +44,7 @@ const validationSchema = Yup.object({
   password: Yup.string()
     .required()
     .label('Password')
-    .max(255),
+    .max(255)
 });
 
 export const Login = () => {
@@ -95,7 +95,7 @@ const Form = withStyles(styles)(
       isValid,
       isSubmitting,
       setFieldTouched,
-      submitForm,
+      submitForm
     } = props;
 
     const change = (name: any, e: any) => {
@@ -125,7 +125,7 @@ const Form = withStyles(styles)(
                 <InputAdornment position="start">
                   <PersonIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             fullWidth
             margin="normal"
@@ -145,7 +145,7 @@ const Form = withStyles(styles)(
                 <InputAdornment position="start">
                   <LockIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             fullWidth
             margin="normal"

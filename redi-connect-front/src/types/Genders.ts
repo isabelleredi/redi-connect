@@ -1,2 +1,2 @@
-import { Gender } from "./Gender";
-export type Genders = Array<Gender>;
+import { Gender } from './Gender';
+export type Genders = Gender[];

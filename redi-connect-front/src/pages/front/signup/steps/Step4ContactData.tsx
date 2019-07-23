@@ -23,7 +23,7 @@ export const validationSchema = Yup.object({
     .label('Slack username'),
   telephoneNumber: Yup.string()
     .max(255)
-    .label('Telephone number'),
+    .label('Telephone number')
 });
 
 export const Step4ContactData = (
@@ -34,13 +34,13 @@ export const Step4ContactData = (
       contactEmail,
       linkedInProfileUrl,
       slackUsername,
-      telephoneNumber,
+      telephoneNumber
     },
     errors,
     touched,
     handleChange,
     isValid,
-    setFieldTouched,
+    setFieldTouched
   } = props;
 
   const change = (name: any, e: any) => {
@@ -67,7 +67,7 @@ export const Step4ContactData = (
             <InputAdornment position="start">
               <EmailIcon />
             </InputAdornment>
-          ),
+          )
         }}
       />
       <TextField
@@ -85,7 +85,7 @@ export const Step4ContactData = (
             <InputAdornment position="start">
               <Icon className={classNames('fab fa-linkedin')} />
             </InputAdornment>
-          ),
+          )
         }}
       />
       <TextField
@@ -103,7 +103,7 @@ export const Step4ContactData = (
             <InputAdornment position="start">
               <Icon className={classNames('fab fa-slack')} />
             </InputAdornment>
-          ),
+          )
         }}
       />
       <TextField
@@ -121,7 +121,7 @@ export const Step4ContactData = (
             <InputAdornment position="start">
               <PhoneIcon />
             </InputAdornment>
-          ),
+          )
         }}
       />
     </>

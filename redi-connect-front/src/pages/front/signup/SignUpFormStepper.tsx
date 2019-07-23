@@ -6,13 +6,17 @@ import StepButton from '@material-ui/core/StepButton';
 
 import { steps } from './steps';
 
-type Props = {
-  activeStep: number,
-  handleStepChange: (step: number) => void,
-  disabled?: boolean,
+interface Props {
+  activeStep: number;
+  handleStepChange: (step: number) => void;
+  disabled?: boolean;
 }
 
-export const SignUpFormStepper = ({ activeStep, handleStepChange, disabled }: Props) => (
+export const SignUpFormStepper = ({
+  activeStep,
+  handleStepChange,
+  disabled
+}: Props) => (
   <Stepper activeStep={activeStep} alternativeLabel>
     {steps.map((label, index) => (
       <Step key={label}>
@@ -25,4 +29,4 @@ export const SignUpFormStepper = ({ activeStep, handleStepChange, disabled }: Pr
       </Step>
     ))}
   </Stepper>
-)
+);

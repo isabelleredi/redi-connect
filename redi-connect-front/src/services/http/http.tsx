@@ -36,14 +36,15 @@ http.interceptors.response.use(
       err.userMessage = 'An error occurred; please try again.';
     }
     console.log(err);
-    
+
     if (_.includes([401, 403], err.response.status)) {
-      purgeAllSessionData()
-      history.push(`/front/login?goto=${encodeURIComponent(history.location.pathname)}`);
+      purgeAllSessionData();
+      history.push(
+        `/front/login?goto=${encodeURIComponent(history.location.pathname)}`
+      );
     } else {
       history.push('/error/4xx');
     }
-    
   }
 );
 

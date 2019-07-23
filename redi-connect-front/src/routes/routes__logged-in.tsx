@@ -4,22 +4,22 @@ import { Profile } from '../pages/app/profile/Profile';
 import { RouteDefinition } from './index';
 import { Me } from '../pages/app/me/Me';
 
-const routes: Array<RouteDefinition> = [
+const routes: RouteDefinition[] = [
   {
     path: '/app/dashboard',
     component: Dashboard,
-    exact: true,
+    exact: true
   },
   {
     path: '/app/profile/:profileId',
     component: Profile,
-    exact: true,
+    exact: true
   },
   {
     path: '/app/applications',
     component: Applications,
     exact: true,
-    name: 'mentee-applicants',
+    name: 'mentee-applicants'
   },
   {
     path: '/app/me',

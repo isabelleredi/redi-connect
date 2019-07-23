@@ -2,7 +2,7 @@ import { RedMatch } from './RedMatch';
 import { RedMentoringSession } from './RedMentoringSession';
 import { UserType } from './UserType';
 
-export type RedProfile = {
+export interface RedProfile {
   id: string;
   userType: UserType;
   mentor_occupation: string;
@@ -11,7 +11,7 @@ export type RedProfile = {
   mentor_ifTypeForm_submittedAt: Date;
   mentee_ifTypeForm_preferredMentorSex: 'male' | 'female' | 'none';
   ifTypeForm_additionalComments: string;
-  mentee_currentCategory: 'student' | 'rediAlumnus'
+  mentee_currentCategory: 'student' | 'rediAlumnus';
   mentee_occupationCategoryId: string; // TODO: do TS magic to make this a union type
   mentee_occupationJob_placeOfEmployment: string;
   mentee_occupationJob_position: string;
@@ -26,14 +26,14 @@ export type RedProfile = {
   lastName: string;
   gender: string;
   age: number;
-  languages: Array<String>;
+  languages: string[];
   otherLanguages: string;
   personalDescription: string;
   contactEmail: string;
   linkedInProfileUrl: string;
   slackUsername: string;
   telephoneNumber: string;
-  categories: Array<string>;
+  categories: string[];
 
   createdAt: Date;
   updatedAt: Date;
@@ -46,8 +46,8 @@ export type RedProfile = {
   currentMenteeCount: number;
   currentFreeMenteeSpots: number;
   matchCountWithCurrentUser: number;
-  redMatchesWithCurrentUser: Array<RedMatch>;
-  redMentoringSessionsWithCurrentUser: Array<RedMentoringSession>;
+  redMatchesWithCurrentUser: RedMatch[];
+  redMentoringSessionsWithCurrentUser: RedMentoringSession[];
   ifUserIsMentee_hasActiveMentor: boolean;
   ifUserIsMentee_activeMentor: RedProfile;
-};
+}

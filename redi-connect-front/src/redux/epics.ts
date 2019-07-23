@@ -9,5 +9,5 @@ export const rootEpic = combineEpics(
   ...Object.values(userEpics),
   ...Object.values(matchesEpics),
   ...Object.values(mentoringSessionsEpics),
-  ...Object.values(profilesEpics),
+  ...Object.values(profilesEpics)
 );

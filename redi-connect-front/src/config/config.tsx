@@ -16,13 +16,13 @@ export const categories: Categories = [
   {
     id: 'interviewsAndCommunication',
     label: 'Interviews & Communications',
-    colour: '#5c9a54',
+    colour: '#5c9a54'
   },
   { id: 'graphicsAndUxUi', label: 'Graphics & UX/UI', colour: '#84dbca' },
   {
     id: 'cvPersonalPresentation',
     label: 'CV & Personal presentation',
-    colour: '#549a7b',
+    colour: '#549a7b'
   },
   { id: 'mobileDevelopment', label: 'Mobile Development', colour: '#89db84' },
   { id: 'jobOrientation', label: 'Job Orientation', colour: '#54969a' },
@@ -31,7 +31,7 @@ export const categories: Categories = [
   { id: 'javaDevelopment', label: 'Java Development', colour: '#db9c84' },
   { id: 'iot', label: 'IoT', colour: '#57549a' },
   { id: 'webDevelopment', label: 'Web Development', colour: '#8484db' },
-  { id: 'freelancing', label: 'Freelancing', colour: '#91549a' },
+  { id: 'freelancing', label: 'Freelancing', colour: '#91549a' }
 ];
 
 export const categoriesIdToLabelMap = mapValues(
@@ -43,30 +43,30 @@ export const categoriesIdToColourMap = mapValues(
   'colour'
 );
 
-export const Languages: Array<Language> = [
+export const Languages: Language[] = [
   'English',
   'German',
   'Arabic',
   'Farsi',
-  'Tigrinya',
+  'Tigrinya'
 ];
 
-export const genders: Array<Gender> = [
+export const genders: Gender[] = [
   { id: 'male', label: 'Male' },
   { id: 'female', label: 'Female' },
-  { id: 'other', label: 'Other' },
+  { id: 'other', label: 'Other' }
 ];
 
-export const educationLevels: Array<EducationLevel> = [
+export const educationLevels: EducationLevel[] = [
   { id: 'middleSchool', label: 'Middle School' },
   { id: 'highSchool', label: 'High School' },
   { id: 'apprenticeship', label: 'Apprenticeship' },
   { id: 'universityBachelor', label: 'University Degree (Bachelor)' },
   { id: 'universityMaster', label: 'University Degree (Master)' },
-  { id: 'universityPhd', label: 'University Degree (PhD)' },
+  { id: 'universityPhd', label: 'University Degree (PhD)' }
 ];
 
-export const courses: Array<Course> = [
+export const courses: Course[] = [
   { id: 'basicComputerTraining', label: 'Basic Computer Training' },
   { id: 'introPython', label: 'Intro to Python' },
   { id: 'javaScript', label: 'Javascript' },
@@ -79,21 +79,21 @@ export const courses: Array<Course> = [
   { id: 'blockchainBasics', label: 'Blockchain Basics' },
   { id: 'introIosAppsSwift', label: 'Intro to iOS Apps with Swift' },
   { id: 'introJava', label: 'Intro to Java' },
-  { id: 'uiUxWomen', label: 'UI/UX Women' },
+  { id: 'uiUxWomen', label: 'UI/UX Women' }
 ];
 
 export const courseIdToLabelMap = mapValues(keyBy(courses, 'id'), 'label');
 
-type ReportProblemCategory = {
+interface ReportProblemCategory {
   id: string;
   label: string;
-};
+}
 
-export const reportProblemCategories: Array<ReportProblemCategory> = [
-  { id: 'wantToQuit', label: 'I want to quit' },
+export const reportProblemCategories: ReportProblemCategory[] = [
+  { id: 'wantToQuit', label: 'I want to quit' }
 ];
 
-export const mentoringSessionDurationOptions: Array<number> = [
+export const mentoringSessionDurationOptions: number[] = [
   15,
   30,
   45,
@@ -105,19 +105,19 @@ export const mentoringSessionDurationOptions: Array<number> = [
   135,
   150,
   165,
-  180,
+  180
 ];
 
-type MenteeOccupationCategory = {
+interface MenteeOccupationCategory {
   id: string;
   label: string;
-};
+}
 
-export const menteeOccupationCategories: Array<MenteeOccupationCategory> = [
+export const menteeOccupationCategories: MenteeOccupationCategory[] = [
   { id: 'job', label: 'Job (full-time/part-time)' },
   { id: 'student', label: 'Student (enrolled at university)' },
   { id: 'lookingForJob', label: 'Looking for a job' },
-  { id: 'other', label: 'Other' },
+  { id: 'other', label: 'Other' }
 ];
 
 export const menteeOccupationCategory_idToLabelMap = mapValues(
@@ -125,7 +125,7 @@ export const menteeOccupationCategory_idToLabelMap = mapValues(
   'label'
 );
 
-export const menteeCountCapacityOptions: Array<number> = [1, 2];
+export const menteeCountCapacityOptions: number[] = [1, 2];
 
 export const AWS_PROFILE_AVATARS_BUCKET_BASE_URL =
   'https://s3-eu-west-1.amazonaws.com/redi-connect-profile-avatars/';

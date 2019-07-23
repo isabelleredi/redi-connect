@@ -13,7 +13,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Divider,
+  Divider
 } from '@material-ui/core';
 import { CssBaseline } from '@material-ui/core';
 
@@ -27,7 +27,7 @@ import { connect } from 'react-redux';
 import { RootState } from '../redux/types';
 import { routes__loggedIn } from '../routes/routes__logged-in';
 
-type LoggedInLayoutProps = {
+interface LoggedInLayoutProps {
   children: React.ReactNode;
   classes: {
     root: string;
@@ -37,22 +37,22 @@ type LoggedInLayoutProps = {
     sectionDesktop: string;
     sectionMobile: string;
   };
-};
+}
 
 const styles = (theme: Theme) =>
   createStyles({
     root: {
-      width: '100%',
+      width: '100%'
     },
     grow: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     // TODO: Can this go into the root ThemeProvider instead?
     button: {
-      color: '#fff',
+      color: '#fff'
     },
     avatar: {
-      color: '#fff',
+      color: '#fff'
     },
     avatarMobile: {
       color: '#000'
@@ -60,22 +60,22 @@ const styles = (theme: Theme) =>
     sectionDesktop: {
       display: 'none',
       [theme.breakpoints.up('sm')]: {
-        display: 'flex',
-      },
+        display: 'flex'
+      }
     },
     sectionMobile: {
       display: 'flex',
       [theme.breakpoints.up('sm')]: {
-        display: 'none',
-      },
-    },
+        display: 'none'
+      }
+    }
   });
 
 export const LoggedInLayout = withStyles(styles)(
   ({ children, classes }: LoggedInLayoutProps) => {
     const [
       mobileMenuAnchorEl,
-      setMobileMenuAnchorEl,
+      setMobileMenuAnchorEl
     ] = useState<HTMLElement | null>(null);
     const LinkToDashboard: any = (props: any) => (
       <Link {...props} to="/app/dashboard" />
@@ -123,7 +123,7 @@ export const LoggedInLayout = withStyles(styles)(
   }
 );
 
-type ButtonsProps = {
+interface ButtonsProps {
   classes: {
     root: string;
     grow: string;
@@ -131,7 +131,7 @@ type ButtonsProps = {
     avatar: string;
     avatarMobile: string;
   };
-};
+}
 
 // TODO: the way of connecting the element below is fucked up. The compose() function
 // leads to a massive TS error. So does trying to do a ButtonProps & { applicantCount: number }
@@ -140,7 +140,7 @@ const Buttons = withRouter(
   connect((state: RootState) => ({
     applicantCount:
       state.user.profile && state.user.profile.currentApplicantCount,
-    menteeCount: state.user.profile && state.user.profile.currentMenteeCount,
+    menteeCount: state.user.profile && state.user.profile.currentMenteeCount
   }))(
     withStyles(styles)((props: ButtonsProps) => {
       // TODO: Replace 'any' with whatever is TS-appropriate
@@ -198,7 +198,7 @@ const ButtonsMobile = withRouter(
   connect((state: RootState) => ({
     applicantCount:
       state.user.profile && state.user.profile.currentApplicantCount,
-    menteeCount: state.user.profile && state.user.profile.currentMenteeCount,
+    menteeCount: state.user.profile && state.user.profile.currentMenteeCount
   }))(
     withStyles(styles)((props: ButtonsProps) => {
       const menteeApplicantsPath = routes__loggedIn.filter(

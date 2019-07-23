@@ -2,7 +2,7 @@ import React from 'react';
 import * as Yup from 'yup';
 import classNames from 'classnames';
 import { TextField, InputAdornment } from '@material-ui/core';
-import { SignUpFormValues, SignUpFormType } from "../Me";
+import { SignUpFormValues, SignUpFormType } from '../Me';
 import { FormikProps } from 'formik';
 import Icon from '@material-ui/core/Icon';
 import EmailIcon from '@material-ui/icons/Email';
@@ -16,14 +16,14 @@ export const Step4ContactData = (
       contactEmail,
       linkedInProfileUrl,
       slackUsername,
-      telephoneNumber,
+      telephoneNumber
     },
     errors,
     touched,
     handleChange,
     isValid,
     isSubmitting,
-    setFieldTouched,
+    setFieldTouched
   } = props;
 
   const change = (name: any, e: any) => {
@@ -51,7 +51,7 @@ export const Step4ContactData = (
             <InputAdornment position="start">
               <EmailIcon />
             </InputAdornment>
-          ),
+          )
         }}
       />
       <TextField
@@ -70,7 +70,7 @@ export const Step4ContactData = (
             <InputAdornment position="start">
               <Icon className={classNames('fab fa-linkedin')} />
             </InputAdornment>
-          ),
+          )
         }}
       />
       <TextField
@@ -89,7 +89,7 @@ export const Step4ContactData = (
             <InputAdornment position="start">
               <Icon className={classNames('fab fa-slack')} />
             </InputAdornment>
-          ),
+          )
         }}
       />
       <TextField
@@ -108,7 +108,7 @@ export const Step4ContactData = (
             <InputAdornment position="start">
               <PhoneIcon />
             </InputAdornment>
-          ),
+          )
         }}
       />
     </>

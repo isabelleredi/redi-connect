@@ -3,9 +3,9 @@ import { RedMentoringSession } from '../types/RedMentoringSession';
 import { Stepper, Step, StepLabel } from '@material-ui/core';
 import moment from 'moment';
 
-type Props = {
-  mentoringSessions: Array<RedMentoringSession>;
-};
+interface Props {
+  mentoringSessions: RedMentoringSession[];
+}
 
 export const MentoringSessionsLog = ({ mentoringSessions }: Props) => {
   if (!mentoringSessions || mentoringSessions.length === 0)

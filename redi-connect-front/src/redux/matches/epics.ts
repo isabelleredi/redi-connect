@@ -8,16 +8,16 @@ import { profileFetchStart } from '../user/actions';
 import {
   matchesAcceptMentorshipSuccess,
   matchesFetchStart,
-  matchesFetchSuccess,
+  matchesFetchSuccess
 } from './actions';
 import {
   MatchesAcceptMentorshipStartAction,
   MatchesActions,
-  MatchesActionType,
+  MatchesActionType
 } from './types';
 
 const fetchFilter = {
-  include: ['mentee', 'mentor'],
+  include: ['mentee', 'mentor']
 };
 
 export const matchesFetchEpic = (action$: ActionsObservable<MatchesActions>) =>
@@ -39,8 +39,8 @@ export const matchesAcceptMentorshipEpic = (action$: ActionsObservable<any>) =>
           method: 'post',
           data: {
             redMatchId: (<MatchesAcceptMentorshipStartAction>action).payload
-              .redMatchId,
-          },
+              .redMatchId
+          }
         })
       ).pipe(
         map(resp => resp.data),
@@ -71,5 +71,5 @@ export const matchesAcceptMentorshipEpic = (action$: ActionsObservable<any>) =>
 
 export const matchesEpics = {
   matchesFetchEpic,
-  matchesAcceptMentorshipEpic,
+  matchesAcceptMentorshipEpic
 };

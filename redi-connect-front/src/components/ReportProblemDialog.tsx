@@ -17,7 +17,7 @@ import {
   TextField,
   FormControlLabel,
   Checkbox,
-  FormHelperText,
+  FormHelperText
 } from '@material-ui/core';
 import classNames from 'classnames';
 import { Formik, FormikActions, FormikProps } from 'formik';
@@ -27,15 +27,15 @@ import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import {
   mentoringSessionDurationOptions,
-  reportProblemCategories,
+  reportProblemCategories
 } from '../config/config';
 import {
   mentoringSessionsClearAsyncResult,
-  mentoringSessionsCreateStart,
+  mentoringSessionsCreateStart
 } from '../redux/mentoringSessions/actions';
 import {
   MentoringSessionsClearAsyncResultAction,
-  MentoringSessionsCreateStartAction,
+  MentoringSessionsCreateStartAction
 } from '../redux/mentoringSessions/types';
 import { RootState } from '../redux/types';
 import { FormSubmitResult } from '../types/FormSubmitResult';
@@ -47,7 +47,7 @@ import { RedProfile } from '../types/RedProfile';
 import { RedProblemReportDto } from '../types/RedProblemReportDto';
 import { profilesFetchOneStart } from '../redux/profiles/actions';
 
-type ReportProblemDialogProps = {
+interface ReportProblemDialogProps {
   redProfileId: string;
   type: ReportProblemBtnProps['type'];
   isOpen: boolean;
@@ -62,7 +62,7 @@ type ReportProblemDialogProps = {
       | MentoringSessionsClearAsyncResultAction
   ) => void;
   */
-};
+}
 /*
 const mapState = (state: RootState) => ({
   asyncResult: state.mentoringSessions.asyncResult,
@@ -103,7 +103,7 @@ const ReportProblemDialogConnected = connect()((props: any) => {
           type === 'mentee'
             ? 'mentor-report-about-mentee'
             : 'mentee-report-about-mentor',
-        reporteeId: redProfileId,
+        reporteeId: redProfileId
       };
       if (type === 'mentee') {
         report.ifFromMentor_cancelMentorshipImmediately =
@@ -161,14 +161,14 @@ export const ReportProblemDialog = (props: any) => (
 
 const initialFormValues: FormValues = {
   problemDescription: '',
-  ifFromMentor_cancelMentorshipImmediately: false,
+  ifFromMentor_cancelMentorshipImmediately: false
 };
 
 const validationSchema = Yup.object({
   problemDescription: Yup.string()
     .required()
     .label('Problem description')
-    .max(1000),
+    .max(1000)
 });
 
 interface FormValues {
@@ -180,20 +180,20 @@ const styles = (theme: Theme) =>
   createStyles({
     submitResult: {
       padding: theme.spacing.unit,
-      color: 'white',
+      color: 'white'
     },
     submitError: {
-      backgroundColor: theme.palette.error.main,
+      backgroundColor: theme.palette.error.main
     },
     submitSuccess: {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: theme.palette.primary.main
     },
     margin: {
-      margin: '6px 0',
-    },
+      margin: '6px 0'
+    }
   });
 
-type FormProps = {
+interface FormProps {
   classes: {
     submitResult: string;
     submitError: string;
@@ -203,7 +203,7 @@ type FormProps = {
   type: RedProfile['userType'];
   submitResult: FormSubmitResult;
   onClose: () => void;
-};
+}
 
 const Form = withStyles(styles)(
   ({
@@ -219,7 +219,7 @@ const Form = withStyles(styles)(
     isValid,
     classes,
     onClose,
-    type,
+    type
   }: FormikProps<FormValues> & FormProps) => {
     const change = (name: any, e: any) => {
       e.persist();

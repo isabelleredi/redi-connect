@@ -6,20 +6,20 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  withStyles,
+  withStyles
 } from '@material-ui/core';
 import { SignUpFormValues, SignUpFormType } from '../Me';
 import { FormikProps } from 'formik';
 import {
   educationLevels,
   courses,
-  menteeOccupationCategories,
+  menteeOccupationCategories
 } from '../../../../config/config';
 
 const styles = (theme: any) => ({
   margin: {
-    margin: '6px 0',
-  },
+    margin: '6px 0'
+  }
 });
 
 export const Comp = (
@@ -39,7 +39,7 @@ export const Comp = (
       mentee_occupationLookingForJob_what,
       mentee_occupationOther_description,
       mentee_highestEducationLevel,
-      mentee_currentlyEnrolledInCourse,
+      mentee_currentlyEnrolledInCourse
     },
     errors,
     touched,
@@ -49,7 +49,7 @@ export const Comp = (
     setFieldTouched,
     setFieldValue,
     type,
-    classes,
+    classes
   } = props;
 
   // TODO: below should be in <Me>. It's used to trigger an immediate validation after
@@ -119,7 +119,7 @@ export const Comp = (
               disabled={isSubmitting}
               inputProps={{
                 name: 'mentee_occupationCategoryId',
-                id: 'mentee_occupationCategoryId',
+                id: 'mentee_occupationCategoryId'
               }}
             >
               {menteeOccupationCategories.map(cat => (
@@ -281,7 +281,7 @@ export const Comp = (
               disabled={isSubmitting}
               inputProps={{
                 name: 'mentee_highestEducationLevel',
-                id: 'mentee_highestEducationLevel',
+                id: 'mentee_highestEducationLevel'
               }}
             >
               {educationLevels.map(mentee_highestEducationLevel => (
@@ -308,7 +308,7 @@ export const Comp = (
               disabled={isSubmitting}
               inputProps={{
                 name: 'mentee_currentlyEnrolledInCourse',
-                id: 'mentee_currentlyEnrolledInCourse',
+                id: 'mentee_currentlyEnrolledInCourse'
               }}
             >
               {courses.map(course => (

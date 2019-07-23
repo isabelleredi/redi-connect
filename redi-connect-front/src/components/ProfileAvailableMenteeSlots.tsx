@@ -4,12 +4,12 @@ import { range } from 'lodash';
 import { RedProfile } from '../types/RedProfile';
 import {
   Person as PersonIcon,
-  PersonOutline as PersonOutlineIcon,
+  PersonOutline as PersonOutlineIcon
 } from '@material-ui/icons';
 
 export const ProfileAvailableMenteeSlots = ({
   totalCapacity,
-  currentFreeCapacity,
+  currentFreeCapacity
 }: {
   totalCapacity: number;
   currentFreeCapacity: number;

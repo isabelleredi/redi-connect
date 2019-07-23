@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { LogMentoringSessionDialog } from './LogMentoringSessionDialog';
 
-type LogMentoringSessionBtnProps = {
+interface LogMentoringSessionBtnProps {
   dispatch: Function;
   menteeId: string;
-};
+}
 
 export const LogMentoringSessionBtn = connect()(
   ({ dispatch, menteeId }: LogMentoringSessionBtnProps) => {

@@ -1,4 +1,4 @@
-export type Gender = {
+export interface Gender {
   id: string;
   label: string;
-};
+}

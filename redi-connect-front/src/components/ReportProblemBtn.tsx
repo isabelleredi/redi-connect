@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { LogMentoringSessionDialog } from './LogMentoringSessionDialog';
 import { ReportProblemDialog } from './ReportProblemDialog';
 
-export type ReportProblemBtnProps = {
+export interface ReportProblemBtnProps {
   dispatch: Function;
   redProfileId: string;
   type: 'mentor' | 'mentee';
-};
+}
 
 export const ReportProblemBtn = connect()(
   ({ dispatch, redProfileId, type }: ReportProblemBtnProps) => {

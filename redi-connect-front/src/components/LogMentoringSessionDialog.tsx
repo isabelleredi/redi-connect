@@ -13,7 +13,7 @@ import {
   Paper,
   Select,
   Theme,
-  withStyles,
+  withStyles
 } from '@material-ui/core';
 import classNames from 'classnames';
 import { Formik, FormikActions, FormikProps } from 'formik';
@@ -24,18 +24,18 @@ import * as Yup from 'yup';
 import { mentoringSessionDurationOptions } from '../config/config';
 import {
   mentoringSessionsClearAsyncResult,
-  mentoringSessionsCreateStart,
+  mentoringSessionsCreateStart
 } from '../redux/mentoringSessions/actions';
 import {
   MentoringSessionsClearAsyncResultAction,
-  MentoringSessionsCreateStartAction,
+  MentoringSessionsCreateStartAction
 } from '../redux/mentoringSessions/types';
 import { RootState } from '../redux/types';
 import { FormSubmitResult } from '../types/FormSubmitResult';
 import { RedMentoringSession } from '../types/RedMentoringSession';
 import { FullScreenCircle } from '../hooks/WithLoading';
 
-type LogMentoringSessionDialogProps = {
+interface LogMentoringSessionDialogProps {
   menteeId: string;
   isOpen: boolean;
   onClose: () => void;
@@ -46,10 +46,10 @@ type LogMentoringSessionDialogProps = {
       | MentoringSessionsCreateStartAction
       | MentoringSessionsClearAsyncResultAction
   ) => void;
-};
+}
 
 const mapState = (state: RootState) => ({
-  asyncResult: state.mentoringSessions.asyncResult,
+  asyncResult: state.mentoringSessions.asyncResult
 });
 
 /*
@@ -64,7 +64,7 @@ export const LogMentoringSessionDialog = connect(mapState)(
     onClose,
     asyncResult,
     menteeId,
-    dispatch,
+    dispatch
   }: LogMentoringSessionDialogProps) => {
     useEffect(() => {
       dispatch(mentoringSessionsClearAsyncResult());
@@ -73,7 +73,7 @@ export const LogMentoringSessionDialog = connect(mapState)(
       const mentoringSession: RedMentoringSession = {
         date: values.date,
         minuteDuration: Number(values.minuteDuration),
-        menteeId: menteeId,
+        menteeId: menteeId
       };
       dispatch(mentoringSessionsCreateStart(mentoringSession));
     };
@@ -114,7 +114,7 @@ export const LogMentoringSessionDialog = connect(mapState)(
 
 const initialFormValues: FormValues = {
   date: new Date(),
-  minuteDuration: 60,
+  minuteDuration: 60
 };
 
 const validationSchema = Yup.object({
@@ -123,7 +123,7 @@ const validationSchema = Yup.object({
     .label('Date'),
   minuteDuration: Yup.number()
     .required()
-    .oneOf(mentoringSessionDurationOptions, 'Please select a duration'),
+    .oneOf(mentoringSessionDurationOptions, 'Please select a duration')
 });
 
 interface FormValues {
@@ -135,20 +135,20 @@ const styles = (theme: Theme) =>
   createStyles({
     submitResult: {
       padding: theme.spacing.unit,
-      color: 'white',
+      color: 'white'
     },
     submitError: {
-      backgroundColor: theme.palette.error.main,
+      backgroundColor: theme.palette.error.main
     },
     submitSuccess: {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: theme.palette.primary.main
     },
     margin: {
-      margin: '6px 0',
-    },
+      margin: '6px 0'
+    }
   });
 
-type FormProps = {
+interface FormProps {
   classes: {
     submitResult: string;
     submitError: string;
@@ -157,7 +157,7 @@ type FormProps = {
   };
   submitResult: FormSubmitResult;
   onClose: () => void;
-};
+}
 
 const Form = withStyles(styles)(
   ({
@@ -173,7 +173,7 @@ const Form = withStyles(styles)(
     isValid,
     classes,
     onClose,
-    validateForm,
+    validateForm
   }: FormikProps<FormValues> & FormProps) => {
     const change = (name: any, e: any) => {
       e.persist();
@@ -185,8 +185,8 @@ const Form = withStyles(styles)(
       setFieldValue('date', date);
     };
     useEffect(() => {
-      validateForm()
-    }, [])
+      validateForm();
+    }, []);
 
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -228,7 +228,7 @@ const Form = withStyles(styles)(
                 disabled={isSubmitting}
                 inputProps={{
                   name: 'minuteDuration',
-                  id: 'minuteDuration',
+                  id: 'minuteDuration'
                 }}
               >
                 {mentoringSessionDurationOptions.map(minuteDuration => (

@@ -5,7 +5,7 @@ import { Work as WorkIcon } from '@material-ui/icons';
 import { courseIdToLabelMap } from '../config/config';
 
 export const ProfileCourse = ({
-  courseId,
+  courseId
 }: {
   courseId: RedProfile['mentee_currentlyEnrolledInCourse'];
 }) => {

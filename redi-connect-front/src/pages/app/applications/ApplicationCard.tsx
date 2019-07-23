@@ -9,7 +9,7 @@ import {
   Button,
   Card,
   CardContent,
-  Tooltip,
+  Tooltip
 } from '@material-ui/core';
 import { Avatar } from '../../../components/Avatar';
 import { connect } from 'react-redux';
@@ -20,28 +20,28 @@ import { history } from '../../../services/history/history';
 import { ConnectButton } from '../../../components/ConnectButton';
 import { menteeOccupationCategory_idToLabelMap } from '../../../config/config';
 
-type Props = {
+interface Props {
   application: RedMatch;
   classes: {
     avatar: string;
     connectBtnContainer: string;
   };
-};
+}
 
 const styles = (theme: Theme) =>
   createStyles({
     avatar: {
       width: '100px',
-      height: '100px',
+      height: '100px'
     },
     connectBtnContainer: {
       [theme.breakpoints.up('xs')]: {
-        justifyContent: 'center',
+        justifyContent: 'center'
       },
       [theme.breakpoints.up('md')]: {
-        justifyContent: 'flex-end',
-      },
-    },
+        justifyContent: 'flex-end'
+      }
+    }
   });
 
 export const ApplicationCard = withStyles(styles)(

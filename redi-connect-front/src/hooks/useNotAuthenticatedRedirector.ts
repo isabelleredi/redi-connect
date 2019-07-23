@@ -8,4 +8,3 @@ export const useNotAuthenticatedRedirector = () => {
   }
   return { isRedirectingToLogin: false };
 };
-

@@ -8,7 +8,7 @@ import {
   saveRedProfile as localStorageSaveRedProfile,
   saveRedUser,
   getRedProfile,
-  getAccessToken,
+  getAccessToken
 } from '../auth/auth';
 import { history } from '../history/history';
 import { http, nonLoggedInHttp } from '../http/http';
@@ -23,7 +23,7 @@ export const signUp = async (
 ) => {
   const userResponse = await http(`${API_URL}/redUsers`, {
     method: 'post',
-    data: { email, password },
+    data: { email, password }
   });
   const user = userResponse.data as RedUser;
   saveRedUser(user);
@@ -34,8 +34,8 @@ export const signUp = async (
       method: 'post',
       data: redProfile,
       headers: {
-        Authorization: accessToken.id,
-      },
+        Authorization: accessToken.id
+      }
     }
   );
   const profile = profileResponse.data as RedProfile;
@@ -48,7 +48,7 @@ export const login = async (
 ): Promise<AccessToken> => {
   const loginResp = await http(`${API_URL}/redUsers/login`, {
     method: 'post',
-    data: { email, password },
+    data: { email, password }
   });
   const accessToken = loginResp.data as AccessToken;
   return accessToken;
@@ -63,23 +63,23 @@ export const setPassword = async (password: string) => {
   const userId = getAccessToken().userId;
   await http(`${API_URL}/redUsers/${userId}`, {
     method: 'patch',
-    data: { password },
+    data: { password }
   });
 };
 
 export const giveGdprConsent = async () => {
-  const profileId = getRedProfile().id
+  const profileId = getRedProfile().id;
   await http(`${API_URL}/redProfiles/${profileId}`, {
     method: 'patch',
-    data: { gaveGdprConsentAt: new Date() },
+    data: { gaveGdprConsentAt: new Date() }
   });
 };
 
 export const activateUser = async () => {
-  const profileId = getRedProfile().id
+  const profileId = getRedProfile().id;
   await http(`${API_URL}/redProfiles/${profileId}`, {
     method: 'patch',
-    data: { userActivated: true },
+    data: { userActivated: true }
   });
 };
 
@@ -89,8 +89,8 @@ export const fetchSaveRedProfile = async (
   const { userId, id: token } = accessToken;
   const profileResp = await http(`${API_URL}/redUsers/${userId}/redProfile`, {
     headers: {
-      Authorization: token,
-    },
+      Authorization: token
+    }
   });
   try {
     const profile = profileResp.data as RedProfile;
@@ -107,17 +107,17 @@ export const saveRedProfile = async (
   const id = redProfile.id;
   const saveProfileResp = await http(`${API_URL}/redProfiles/${id}`, {
     data: redProfile,
-    method: 'patch',
+    method: 'patch'
   });
   const savedProfile = saveProfileResp.data as RedProfile;
   localStorageSaveRedProfile(savedProfile);
   return savedProfile;
 };
 
-export const getProfiles = (userType: UserType): Promise<Array<RedProfile>> =>
+export const getProfiles = (userType: UserType): Promise<RedProfile[]> =>
   http(
     `${API_URL}/redProfiles?filter=${JSON.stringify({
-      where: { userType: 'mentor' },
+      where: { userType: 'mentor' }
     })}`
   ).then(resp => resp.data);
 export const getMentors = () => getProfiles('mentor');
@@ -127,11 +127,11 @@ export const getProfile = (profileId: string): Promise<RedProfile> =>
   http(`${API_URL}/redProfiles/${profileId}`).then(resp => resp.data);
 
 // TODO: status: 'applied' here should be matched against RedMatch['status']
-export const fetchApplicants = async (): Promise<Array<RedProfile>> =>
+export const fetchApplicants = async (): Promise<RedProfile[]> =>
   http(
     `${API_URL}/redMatches?filter=` +
       JSON.stringify({
-        where: { mentorId: getRedProfile().id, status: 'applied' },
+        where: { mentorId: getRedProfile().id, status: 'applied' }
       })
   ).then(resp => resp.data);
 
@@ -141,7 +141,7 @@ export const requestMentorship = (
 ): Promise<RedMatch> =>
   http(`${API_URL}/redMatches/requestMentorship`, {
     method: 'post',
-    data: { applicationText, mentorId },
+    data: { applicationText, mentorId }
   }).then(resp => resp.data);
 
 export const reportProblem = async (
@@ -149,5 +149,5 @@ export const reportProblem = async (
 ): Promise<any> =>
   http(`${API_URL}/redProblemReports`, {
     method: 'post',
-    data: problemReport,
+    data: problemReport
   }).then(resp => resp.data);

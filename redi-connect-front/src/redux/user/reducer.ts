@@ -30,7 +30,7 @@ export const userReducer = (
       return { ...state, saveResult: 'success', profile: action.payload };
     case UserActionType.USER_PROFILE_SAVE_ERROR:
       return { ...state, saveResult: 'error' };
-      
+
     default:
       return state;
   }

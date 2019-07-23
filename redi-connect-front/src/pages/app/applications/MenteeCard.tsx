@@ -4,7 +4,7 @@ import {
   createStyles,
   Grid,
   Theme,
-  withStyles,
+  withStyles
 } from '@material-ui/core';
 import { Language as LanguageIcon } from '@material-ui/icons';
 import React from 'react';
@@ -14,23 +14,23 @@ import { courseIdToLabelMap } from '../../../config/config';
 import { RedProfile } from '../../../types/RedProfile';
 import { history } from '../../../services/history/history';
 
-type Props = {
+interface Props {
   mentee: RedProfile;
   classes: {
     avatar: string;
     logMentoringSessionBtnContainer: string;
   };
-};
+}
 
 const styles = (theme: Theme) =>
   createStyles({
     avatar: {
       width: '100px',
-      height: '100px',
+      height: '100px'
     },
     logMentoringSessionBtnContainer: {
-      justifyContent: 'center',
-    },
+      justifyContent: 'center'
+    }
   });
 
 export const MenteeCard = withStyles(styles)(({ mentee, classes }: Props) => {

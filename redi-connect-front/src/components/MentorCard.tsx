@@ -8,38 +8,38 @@ import {
   withStyles,
   Grid,
   Chip,
-  Theme,
+  Theme
 } from '@material-ui/core';
 import { Language as LanguageIcon } from '@material-ui/icons';
 import { Avatar } from './Avatar';
 import {
   categories,
   categoriesIdToColourMap,
-  categoriesIdToLabelMap,
+  categoriesIdToLabelMap
 } from '../config/config';
 import { CategoryChip } from './CategoryChip';
 
-type Props = {
+interface Props {
   mentor: RedProfile;
   classes: {
     avatar: string;
     category: string;
   };
   onClick?: Function;
-};
+}
 
 const styles = (theme: Theme) =>
   createStyles({
     avatar: {
       width: '100px',
-      height: '100px',
+      height: '100px'
     },
     category: {
       color: 'white',
       fontSize: '12px',
       margin: '3px',
-      height: '20px',
-    },
+      height: '20px'
+    }
   });
 
 export const MentorCard = withStyles(styles)(

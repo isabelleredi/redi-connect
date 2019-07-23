@@ -67,14 +67,14 @@ export interface SignUpFormValues {
   lastName: string;
   gender: string;
   age?: number;
-  languages: Array<String>;
+  languages: string[];
   otherLanguages: string;
   personalDescription: string;
   contactEmail: string;
   linkedInProfileUrl: string;
   slackUsername: string;
   telephoneNumber: string;
-  categories: Array<string>;
+  categories: string[];
   menteeCountCapacity: number;
 }
 
@@ -102,8 +102,7 @@ const initialValues: SignUpFormValues = {
   age: undefined,
   languages: ['English'],
   otherLanguages: '',
-  personalDescription:
-    '',
+  personalDescription: '',
   contactEmail: 'eric@binarylights.com',
   linkedInProfileUrl: '',
   slackUsername: '',
@@ -124,7 +123,7 @@ export const buildSignUpForm = (
     values: FormikValues,
     actions: FormikActions<SignUpFormValues>
   ) => {
-    setSubmitError(false)
+    setSubmitError(false);
     const profile = values as RedProfile;
     // TODO: this needs to be done in a smarter way, like iterating over the RedProfile definition or something
     const cleanProfile: RedProfile = omit(profile, [
@@ -148,7 +147,7 @@ export const buildSignUpForm = (
     props.children(props.classes)
   );
 
-  initialValues.formType = type
+  initialValues.formType = type;
 
   return (
     <>
@@ -166,7 +165,9 @@ export const buildSignUpForm = (
             {submitError && (
               <GetClasses>
                 {(classes: any) => (
-                  <Paper className={classes.submitError}>An error occurred, please try again.</Paper>
+                  <Paper className={classes.submitError}>
+                    An error occurred, please try again.
+                  </Paper>
                 )}
               </GetClasses>
             )}
@@ -220,7 +221,7 @@ export const buildSignUpForm = (
 
 function useStepper(
   initialStep = 0
-): [number, Function, Function, Function, Object] {
+): [number, Function, Function, Function, Record<string, any>] {
   const [step, setStep] = useState(initialStep);
 
   const prev = () => setStep(page => page - 1);

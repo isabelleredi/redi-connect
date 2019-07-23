@@ -15,32 +15,32 @@ import { LogMentoringSessionBtn } from '../../../../components/LogMentoringSessi
 import { MentoringSessionsLog } from '../../../../components/MentoringSessionsLog';
 import { ReportProblemBtn } from '../../../../components/ReportProblemBtn';
 
-type Props = {
+interface Props {
   mentee: RedProfile;
   classes: {
     avatar: string;
     category: string;
     personalDescription: string;
   };
-};
+}
 
 const styles = (theme: Theme) =>
   createStyles({
     avatar: {
       width: '100px',
-      height: '100px',
+      height: '100px'
     },
     category: {
       color: 'white',
       fontSize: '12px',
       margin: '3px',
-      height: '20px',
+      height: '20px'
     },
     personalDescription: {
       marginTop: theme.spacing.unit * 6,
       marginBottom: theme.spacing.unit * 6,
-      overflowWrap: 'break-word',
-    },
+      overflowWrap: 'break-word'
+    }
   });
 
 export const ProfileMentee = withStyles(styles)(
@@ -81,12 +81,17 @@ export const ProfileMentee = withStyles(styles)(
         <p className={classes.personalDescription}>
           {mentee.personalDescription}
         </p>
-        {mentee.expectations && <>
-          <h4 style={{ marginBottom: 0 }}>Expectations to my mentor:</h4>
-          <p className={classes.personalDescription} style={{ marginTop: '0.3em' }}>
-            {mentee.expectations}
-          </p>
-        </>}
+        {mentee.expectations && (
+          <>
+            <h4 style={{ marginBottom: 0 }}>Expectations to my mentor:</h4>
+            <p
+              className={classes.personalDescription}
+              style={{ marginTop: '0.3em' }}
+            >
+              {mentee.expectations}
+            </p>
+          </>
+        )}
 
         {match && match.status === 'applied' && (
           <>

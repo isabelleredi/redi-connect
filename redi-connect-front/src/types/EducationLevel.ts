@@ -1,4 +1,4 @@
-export type EducationLevel = {
+export interface EducationLevel {
   id: string;
   label: string;
-};
+}

@@ -2,7 +2,7 @@ import { Action } from 'redux';
 import { RedMatch } from '../../types/RedMatch';
 
 export interface MatchesState {
-  matches: Array<RedMatch>;
+  matches: RedMatch[];
   loading: boolean;
 }
 
@@ -12,14 +12,14 @@ export enum MatchesActionType {
   MATCHES_FETCH_ERROR = 'MATCHES_FETCH_ERROR',
   MATCHES_ACCEPT_MENTORSHIP_START = 'MATCHES_ACCEPT_MENTORSHIP_START',
   MATCHES_ACCEPT_MENTORSHIP_SUCCESS = 'MATCHES_ACCEPT_MENTORSHIP_SUCCESS',
-  MATCHES_ACCEPT_MENTORSHIP_ERROR = 'MATCHES_ACCEPT_MENTORSHIP_ERROR',
+  MATCHES_ACCEPT_MENTORSHIP_ERROR = 'MATCHES_ACCEPT_MENTORSHIP_ERROR'
 }
 export interface MatchesFetchStartAction extends Action {
   type: MatchesActionType.MATCHES_FETCH_START;
 }
 export interface MatchesFetchSuccessAction extends Action {
   type: MatchesActionType.MATCHES_FETCH_SUCCESS;
-  payload: Array<RedMatch>;
+  payload: RedMatch[];
 }
 export interface MatchesFetchErrorAction extends Action {
   type: MatchesActionType.MATCHES_FETCH_ERROR;
@@ -33,7 +33,7 @@ export interface MatchesAcceptMentorshipStartAction extends Action {
 }
 export interface MatchesAcceptMentorshipSuccessAction extends Action {
   type: MatchesActionType.MATCHES_ACCEPT_MENTORSHIP_SUCCESS;
-  payload: Array<RedMatch>;
+  payload: RedMatch[];
 }
 export interface MatchesAcceptMentorshipErrorAction extends Action {
   type: MatchesActionType.MATCHES_ACCEPT_MENTORSHIP_ERROR;

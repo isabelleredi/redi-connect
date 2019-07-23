@@ -10,7 +10,12 @@ export const Routes = () => (
     <Switch>
       {allRoutes.map(({ requiresLoggedIn, exact, path, component }, i) =>
         requiresLoggedIn ? (
-          <PrivateRoute exact={exact} path={path} component={component} key={i} />
+          <PrivateRoute
+            exact={exact}
+            path={path}
+            component={component}
+            key={i}
+          />
         ) : (
           <Route exact={exact} path={path} component={component} key={i} />
         )

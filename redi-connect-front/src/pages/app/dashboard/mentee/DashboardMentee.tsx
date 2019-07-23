@@ -9,7 +9,7 @@ const mapState = (state: RootState) => ({
   currentMenteeUserHasActiveMentor:
     state.user.profile && state.user.profile.ifUserIsMentee_hasActiveMentor,
   activeMentor:
-    state.user.profile && state.user.profile.ifUserIsMentee_activeMentor,
+    state.user.profile && state.user.profile.ifUserIsMentee_activeMentor
 });
 
 connect;

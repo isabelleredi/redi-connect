@@ -16,43 +16,43 @@ const styles = createStyles((theme: any) => ({
     marginRight: '1em',
     color: 'white',
     fontSize: '12px',
-    float: 'left',
+    float: 'left'
   },
   paper: {
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: '2em',
+    marginBottom: '2em'
   },
   header: {
-    marginTop: 0,
-  },
+    marginTop: 0
+  }
 }));
 
-type Props = {
+interface Props {
   classes: {
     categoryChip: string;
     paper: string;
     header: string;
   };
-};
+}
 
 type MentorCatCount = RedProfile & { categoryMatchCount: number };
 
 const addCategoryMatchCount = (
-  mentors: Array<RedProfile>,
-  categories: Array<string>
-): Array<MentorCatCount> =>
+  mentors: RedProfile[],
+  categories: string[]
+): MentorCatCount[] =>
   mentors.map(mentor =>
     Object.assign(mentor, {
-      categoryMatchCount: intersection(categories, mentor.categories).length,
+      categoryMatchCount: intersection(categories, mentor.categories).length
     })
   );
 
 export const AvailableMentorListing = withStyles(styles)((props: any) => {
   const classes: any = props.classes;
   const { Loading, setLoading } = withLoading();
-  const [_mentors, setMentors] = useState<Array<RedProfile>>([]);
+  const [_mentors, setMentors] = useState<RedProfile[]>([]);
   const currentUserCategories = getRedProfile().categories;
   const [activeCategories, { toggle }] = useList(currentUserCategories);
 

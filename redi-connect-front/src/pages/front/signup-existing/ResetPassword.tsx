@@ -8,7 +8,7 @@ import {
   Paper,
   Theme,
   createStyles,
-  withStyles,
+  withStyles
 } from '@material-ui/core';
 import { Lock as LockIcon, Person as PersonIcon } from '@material-ui/icons';
 import { Formik, FormikProps, FormikActions, FormikValues } from 'formik';
@@ -18,7 +18,7 @@ import {
   fetchSaveRedProfile,
   setPassword,
   giveGdprConsent,
-  activateUser,
+  activateUser
 } from '../../../services/api/api';
 import { saveAccessToken } from '../../../services/auth/auth';
 
@@ -27,8 +27,8 @@ const styles = (theme: Theme) =>
     formError: {
       padding: theme.spacing.unit,
       backgroundColor: theme.palette.error.main,
-      color: 'white',
-    },
+      color: 'white'
+    }
   });
 
 interface ResetPasswordValues {
@@ -38,7 +38,7 @@ interface ResetPasswordValues {
 
 const initialValues: ResetPasswordValues = {
   password: '',
-  passwordConfirm: '',
+  passwordConfirm: ''
 };
 
 const validationSchema = Yup.object({
@@ -48,7 +48,7 @@ const validationSchema = Yup.object({
     .label('Password'),
   passwordConfirm: Yup.string()
     .required('Confirm your password')
-    .oneOf([Yup.ref('password')], 'Password does not match'),
+    .oneOf([Yup.ref('password')], 'Password does not match')
 });
 
 export const ResetPassword = () => {
@@ -99,7 +99,7 @@ const Form = withStyles(styles)(
       isValid,
       isSubmitting,
       setFieldTouched,
-      submitForm,
+      submitForm
     } = props;
 
     const change = (name: any, e: any) => {
@@ -127,7 +127,7 @@ const Form = withStyles(styles)(
                 <InputAdornment position="start">
                   <LockIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             fullWidth
             margin="normal"
@@ -147,7 +147,7 @@ const Form = withStyles(styles)(
                 <InputAdornment position="start">
                   <LockIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             fullWidth
             margin="normal"
