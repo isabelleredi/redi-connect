@@ -1,6 +1,5 @@
 import React, { useState, FormEvent } from "react";
 import { range } from "lodash";
-
 import {
   AppBar,
   createStyles,
@@ -13,7 +12,6 @@ import {
   Menu,
   MenuItem
 } from "@material-ui/core";
-
 import { Link, withRouter } from "react-router-dom";
 import { PersonOutline, Menu as MenuIcon } from "@material-ui/icons";
 import { connect } from "react-redux";
