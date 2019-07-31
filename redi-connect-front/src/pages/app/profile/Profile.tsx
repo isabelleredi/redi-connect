@@ -1,17 +1,17 @@
-import { Button, Theme, createStyles, withStyles } from '@material-ui/core';
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
-import { withLoading, FullScreenCircle } from '../../../hooks/WithLoading';
-import { LoggedInLayout } from '../../../layouts/LoggedInLayout';
-import { getProfile } from '../../../services/api/api';
-import { RedProfile } from '../../../types/RedProfile';
-import { ProfileMentee } from './mentee/ProfileMentee';
-import { ProfileMentor } from './mentor/ProfileMentor';
-import { history } from '../../../services/history/history';
-import { connect } from 'react-redux';
-import { profilesFetchOneStart } from '../../../redux/profiles/actions';
-import { RootState } from '../../../redux/types';
-import { ProfileAcceptedMatch } from './acceptedMatch/ProfileAcceptedMatch';
+import { Button, Theme, createStyles, withStyles } from "@material-ui/core";
+import React, { FunctionComponent, useEffect, useState } from "react";
+import { Link, RouteComponentProps } from "react-router-dom";
+import { withLoading, FullScreenCircle } from "../../../hooks/WithLoading";
+import { LoggedInLayout } from "../../../layouts/LoggedInLayout";
+import { getProfile } from "../../../services/api/api";
+import { RedProfile } from "../../../types/RedProfile";
+import { ProfileMentee } from "./mentee/ProfileMentee";
+import { ProfileMentor } from "./mentor/ProfileMentor";
+import { history } from "../../../services/history/history";
+import { connect } from "react-redux";
+import { profilesFetchOneStart } from "../../../redux/profiles/actions";
+import { RootState } from "../../../redux/types";
+import { ProfileAcceptedMatch } from "./acceptedMatch/ProfileAcceptedMatch";
 
 interface RouteParams {
   profileId: string;
@@ -21,14 +21,14 @@ const styles = (theme: Theme) =>
   createStyles({
     button: {
       marginTop: theme.spacing.unit * 2,
-      marginBottom: theme.spacing.unit * 2,
-    },
+      marginBottom: theme.spacing.unit * 2
+    }
   });
 
 export const Profile: FunctionComponent<RouteComponentProps<RouteParams>> = ({
   match: {
-    params: { profileId },
-  },
+    params: { profileId }
+  }
 }) => {
   return (
     <ProfileLoader profileId={profileId}>
@@ -45,7 +45,7 @@ export const Profile: FunctionComponent<RouteComponentProps<RouteParams>> = ({
 const ProfileLoader = connect((state: RootState) => ({
   loading: state.profiles.loading,
   profile: state.profiles.oneProfile,
-  currentUser: state.user.profile,
+  currentUser: state.user.profile
 }))((props: any) => {
   useEffect(() => {
     props.dispatch(profilesFetchOneStart(props.profileId));
@@ -53,17 +53,17 @@ const ProfileLoader = connect((state: RootState) => ({
   return props.children({
     loading: props.loading,
     profile: props.profile,
-    currentUser: props.currentUser,
+    currentUser: props.currentUser
   });
 });
 
-type PresentationProps = {
+interface PresentationProps {
   classes: {
     button: string;
   };
   profile: RedProfile | undefined;
   currentUser: RedProfile | undefined;
-};
+}
 
 const Presentation = withStyles(styles)(
   ({ classes, profile, currentUser }: PresentationProps) => {
@@ -71,9 +71,9 @@ const Presentation = withStyles(styles)(
       profile &&
       profile.redMatchesWithCurrentUser &&
       profile.redMatchesWithCurrentUser[0] &&
-      profile.redMatchesWithCurrentUser[0].status === 'accepted';
+      profile.redMatchesWithCurrentUser[0].status === "accepted";
     const currentUserIsMentor =
-      currentUser && currentUser.userType === 'mentor';
+      currentUser && currentUser.userType === "mentor";
     const LinkToDashboard: any = (props: any) => (
       <Link {...props} to="/app/dashboard" />
     );
@@ -93,11 +93,11 @@ const Presentation = withStyles(styles)(
           <ProfileAcceptedMatch profile={profile} />
         )}
         {!isAcceptedMatch &&
-          typeof profile !== 'undefined' &&
-          profile.userType === 'mentee' && <ProfileMentee mentee={profile} />}
+          typeof profile !== "undefined" &&
+          profile.userType === "mentee" && <ProfileMentee mentee={profile} />}
         {!isAcceptedMatch &&
-          typeof profile !== 'undefined' &&
-          profile.userType === 'mentor' && <ProfileMentor mentor={profile} />}
+          typeof profile !== "undefined" &&
+          profile.userType === "mentor" && <ProfileMentor mentor={profile} />}
       </LoggedInLayout>
     );
   }

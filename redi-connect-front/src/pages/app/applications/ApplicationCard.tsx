@@ -1,6 +1,6 @@
-import React from 'react';
-import { Language as LanguageIcon } from '@material-ui/icons';
-import { RedMatch } from '../../../types/RedMatch';
+import React from "react";
+import { Language as LanguageIcon } from "@material-ui/icons";
+import { RedMatch } from "../../../types/RedMatch";
 import {
   Grid,
   createStyles,
@@ -9,39 +9,39 @@ import {
   Button,
   Card,
   CardContent,
-  Tooltip,
-} from '@material-ui/core';
-import { Avatar } from '../../../components/Avatar';
-import { connect } from 'react-redux';
-import { matchesAcceptMentorshipStart } from '../../../redux/matches/actions';
-import { getHasReachedMenteeLimit } from '../../../redux/user/selectors';
-import { RootState } from '../../../redux/types';
-import { history } from '../../../services/history/history';
-import { ConnectButton } from '../../../components/ConnectButton';
-import { menteeOccupationCategory_idToLabelMap } from '../../../config/config';
+  Tooltip
+} from "@material-ui/core";
+import { Avatar } from "../../../components/Avatar";
+import { connect } from "react-redux";
+import { matchesAcceptMentorshipStart } from "../../../redux/matches/actions";
+import { getHasReachedMenteeLimit } from "../../../redux/user/selectors";
+import { RootState } from "../../../redux/types";
+import { history } from "../../../services/history/history";
+import { ConnectButton } from "../../../components/ConnectButton";
+import { menteeOccupationCategory_idToLabelMap } from "../../../config/config";
 
-type Props = {
+interface Props {
   application: RedMatch;
   classes: {
     avatar: string;
     connectBtnContainer: string;
   };
-};
+}
 
 const styles = (theme: Theme) =>
   createStyles({
     avatar: {
-      width: '100px',
-      height: '100px',
+      width: "100px",
+      height: "100px"
     },
     connectBtnContainer: {
-      [theme.breakpoints.up('xs')]: {
-        justifyContent: 'center',
+      [theme.breakpoints.up("xs")]: {
+        justifyContent: "center"
       },
-      [theme.breakpoints.up('md')]: {
-        justifyContent: 'flex-end',
-      },
-    },
+      [theme.breakpoints.up("md")]: {
+        justifyContent: "flex-end"
+      }
+    }
   });
 
 export const ApplicationCard = withStyles(styles)(
@@ -66,10 +66,10 @@ export const ApplicationCard = withStyles(styles)(
                   />
                 </Grid>
                 <Grid item>
-                  <h3 style={{ fontWeight: 700, fontFamily: 'Roboto' }}>
+                  <h3 style={{ fontWeight: 700, fontFamily: "Roboto" }}>
                     {application.mentee.firstName} {application.mentee.lastName}
                   </h3>
-                  <h4 style={{ fontWeight: 400, fontFamily: 'Roboto' }}>
+                  <h4 style={{ fontWeight: 400, fontFamily: "Roboto" }}>
                     {
                       menteeOccupationCategory_idToLabelMap[
                         application.mentee.mentee_occupationCategoryId
@@ -82,17 +82,17 @@ export const ApplicationCard = withStyles(styles)(
                 container
                 spacing={8}
                 alignItems="center"
-                style={{ margin: '5px 0' }}
+                style={{ margin: "5px 0" }}
               >
                 <Grid item>
                   <LanguageIcon />
                 </Grid>
-                <Grid item>{application.mentee.languages.join(', ')}</Grid>
+                <Grid item>{application.mentee.languages.join(", ")}</Grid>
               </Grid>
             </Grid>
             <Grid item xs={12} md={4}>
               <h3>Application message</h3>
-              <p style={{ overflowWrap: 'break-word' }}>
+              <p style={{ overflowWrap: "break-word" }}>
                 {application.applicationText}
               </p>
             </Grid>
@@ -101,7 +101,7 @@ export const ApplicationCard = withStyles(styles)(
                 container
                 alignItems="center"
                 className={classes.connectBtnContainer}
-                style={{ height: '100%' }}
+                style={{ height: "100%" }}
               >
                 <ConnectButton matchId={application.id} />
               </Grid>

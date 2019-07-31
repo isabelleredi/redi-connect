@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { LoggedOutLayout } from '../../../layouts/LoggedOutLayout';
-import * as Yup from 'yup';
+import React, { useState } from "react";
+import { LoggedOutLayout } from "../../../layouts/LoggedOutLayout";
+import * as Yup from "yup";
 import {
   TextField,
   InputAdornment,
@@ -8,27 +8,27 @@ import {
   Paper,
   Theme,
   createStyles,
-  withStyles,
-} from '@material-ui/core';
-import { Lock as LockIcon, Person as PersonIcon } from '@material-ui/icons';
-import { Formik, FormikProps, FormikActions, FormikValues } from 'formik';
-import { history } from '../../../services/history/history';
+  withStyles
+} from "@material-ui/core";
+import { Lock as LockIcon, Person as PersonIcon } from "@material-ui/icons";
+import { Formik, FormikProps, FormikActions, FormikValues } from "formik";
+import { history } from "../../../services/history/history";
 import {
   login,
   fetchSaveRedProfile,
   setPassword,
   giveGdprConsent,
-  activateUser,
-} from '../../../services/api/api';
-import { saveAccessToken } from '../../../services/auth/auth';
+  activateUser
+} from "../../../services/api/api";
+import { saveAccessToken } from "../../../services/auth/auth";
 
 const styles = (theme: Theme) =>
   createStyles({
     formError: {
       padding: theme.spacing.unit,
       backgroundColor: theme.palette.error.main,
-      color: 'white',
-    },
+      color: "white"
+    }
   });
 
 interface ResetPasswordValues {
@@ -37,22 +37,22 @@ interface ResetPasswordValues {
 }
 
 const initialValues: ResetPasswordValues = {
-  password: '',
-  passwordConfirm: '',
+  password: "",
+  passwordConfirm: ""
 };
 
 const validationSchema = Yup.object({
   password: Yup.string()
-    .min(8, 'Password must contain at least 8 characters')
-    .required('Enter your password')
-    .label('Password'),
+    .min(8, "Password must contain at least 8 characters")
+    .required("Enter your password")
+    .label("Password"),
   passwordConfirm: Yup.string()
-    .required('Confirm your password')
-    .oneOf([Yup.ref('password')], 'Password does not match'),
+    .required("Confirm your password")
+    .oneOf([Yup.ref("password")], "Password does not match")
 });
 
 export const ResetPassword = () => {
-  const [formError, setFormError] = useState<string>('');
+  const [formError, setFormError] = useState<string>("");
 
   const submitForm = async (
     values: FormikValues,
@@ -63,9 +63,9 @@ export const ResetPassword = () => {
       await setPassword(values.password);
       await giveGdprConsent();
       await activateUser();
-      history.push('/app/dashboard');
+      history.push("/app/dashboard");
     } catch (err) {
-      setFormError('Invalid username or password');
+      setFormError("Invalid username or password");
     }
     actions.setSubmitting(false);
   };
@@ -99,7 +99,7 @@ const Form = withStyles(styles)(
       isValid,
       isSubmitting,
       setFieldTouched,
-      submitForm,
+      submitForm
     } = props;
 
     const change = (name: any, e: any) => {
@@ -117,17 +117,17 @@ const Form = withStyles(styles)(
             id="password"
             name="password"
             type="password"
-            helperText={touched.password ? errors.password : ''}
+            helperText={touched.password ? errors.password : ""}
             error={touched.password && Boolean(errors.password)}
             label="Password*"
             value={password}
-            onChange={change.bind(null, 'password')}
+            onChange={change.bind(null, "password")}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
                   <LockIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             fullWidth
             margin="normal"
@@ -137,17 +137,17 @@ const Form = withStyles(styles)(
             id="passwordConfirm"
             name="passwordConfirm"
             type="password"
-            helperText={touched.passwordConfirm ? errors.passwordConfirm : ''}
+            helperText={touched.passwordConfirm ? errors.passwordConfirm : ""}
             error={touched.passwordConfirm && Boolean(errors.passwordConfirm)}
             label="Repeat password*"
             value={passwordConfirm}
-            onChange={change.bind(null, 'passwordConfirm')}
+            onChange={change.bind(null, "passwordConfirm")}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
                   <LockIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             fullWidth
             margin="normal"

@@ -19,14 +19,14 @@ import {
 } from "../config/config";
 import { CategoryChip } from "./CategoryChip";
 
-type Props = {
+interface Props {
   mentor: RedProfile;
   classes: {
     avatar: string;
     category: string;
   };
   onClick?: Function;
-};
+}
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -46,7 +46,7 @@ export const MentorCard = withStyles(styles)(
   ({ mentor, classes, onClick }: Props) => {
     if (!mentor.categories) console.log(mentor);
     return (
-      <Card onClick={() => typeof onClick === 'function' && onClick()}>
+      <Card onClick={() => typeof onClick === "function" && onClick()}>
         <CardContent>
           <Grid container spacing={8}>
             <Grid item>
@@ -56,10 +56,10 @@ export const MentorCard = withStyles(styles)(
               />
             </Grid>
             <Grid item>
-              <h3 style={{ fontWeight: 700, fontFamily: 'Roboto' }}>
+              <h3 style={{ fontWeight: 700, fontFamily: "Roboto" }}>
                 {mentor.firstName} {mentor.lastName}
               </h3>
-              <h4 style={{ fontWeight: 400, fontFamily: 'Roboto' }}>
+              <h4 style={{ fontWeight: 400, fontFamily: "Roboto" }}>
                 {mentor.mentor_occupation}
               </h4>
             </Grid>
@@ -68,12 +68,12 @@ export const MentorCard = withStyles(styles)(
             container
             spacing={8}
             alignItems="center"
-            style={{ margin: '5px 0' }}
+            style={{ margin: "5px 0" }}
           >
             <Grid item>
               <LanguageIcon />
             </Grid>
-            <Grid item>{mentor.languages.join(', ')}</Grid>
+            <Grid item>{mentor.languages.join(", ")}</Grid>
           </Grid>
           {mentor.categories.map(catId => (
             <CategoryChip

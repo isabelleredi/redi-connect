@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
-import { LoggedInLayout } from '../../../layouts/LoggedInLayout';
-import { RedProfile } from '../../../types/RedProfile';
+import React, { useEffect } from "react";
+import { LoggedInLayout } from "../../../layouts/LoggedInLayout";
+import { RedProfile } from "../../../types/RedProfile";
 import {
   fetchSaveRedProfile,
-  fetchApplicants,
-} from '../../../services/api/api';
-import { getAccessToken } from '../../../services/auth/auth';
-import { RootState } from '../../../redux/types';
-import { getApplicants, getMentees } from '../../../redux/matches/selectors';
-import { connect } from 'react-redux';
-import { matchesFetchStart } from '../../../redux/matches/actions';
-import { FullScreenCircle } from '../../../hooks/WithLoading';
-import { RedMatch } from '../../../types/RedMatch';
-import { ApplicationCard } from './ApplicationCard';
-import { Grid, Paper, withStyles } from '@material-ui/core';
-import { MenteeCard } from './MenteeCard';
+  fetchApplicants
+} from "../../../services/api/api";
+import { getAccessToken } from "../../../services/auth/auth";
+import { RootState } from "../../../redux/types";
+import { getApplicants, getMentees } from "../../../redux/matches/selectors";
+import { connect } from "react-redux";
+import { matchesFetchStart } from "../../../redux/matches/actions";
+import { FullScreenCircle } from "../../../hooks/WithLoading";
+import { RedMatch } from "../../../types/RedMatch";
+import { ApplicationCard } from "./ApplicationCard";
+import { Grid, Paper, withStyles } from "@material-ui/core";
+import { MenteeCard } from "./MenteeCard";
 
 /*
 const withData = (): {
@@ -36,15 +36,15 @@ const withData = (): {
   return { me, applicants };
 };
 
-type Props = {
-  mentees: Array<RedMatch>;
-  applicants: Array<RedMatch>;
-};
+interface Props {
+  mentees: RedMatch[];
+  applicants: RedMatch[];
+}
 
 const mapState = (state: RootState) => ({
   loading: state.matches.loading,
   mentees: getMentees(state.matches),
-  applicants: getApplicants(state.matches),
+  applicants: getApplicants(state.matches)
 });
 
 const styles = (theme: any) => ({
@@ -52,10 +52,10 @@ const styles = (theme: any) => ({
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    marginBottom: '2em',
+    marginBottom: "2em"
   },
   header: {
-    marginTop: 0,
+    marginTop: 0
   }
 });
 
@@ -66,8 +66,8 @@ export const Applications = withStyles(styles)(
       (props as any).dispatch(matchesFetchStart());
     }, []);
 
-    const mentees: Array<RedMatch> = (props as any).mentees;
-    const applicants: Array<RedMatch> = (props as any).applicants;
+    const mentees: RedMatch[] = (props as any).mentees;
+    const applicants: RedMatch[] = (props as any).applicants;
 
     return (
       <LoggedInLayout>

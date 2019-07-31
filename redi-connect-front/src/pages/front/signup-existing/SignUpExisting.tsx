@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { LoggedOutLayout } from '../../../layouts/LoggedOutLayout';
-import { RouteComponentProps } from 'react-router';
-import { withLoading } from '../../../hooks/WithLoading';
-import { saveAccessToken } from '../../../services/auth/auth';
-import { fetchSaveRedProfile } from '../../../services/api/api';
-import { history } from '../../../services/history/history';
+import React, { useEffect, useState } from "react";
+import { LoggedOutLayout } from "../../../layouts/LoggedOutLayout";
+import { RouteComponentProps } from "react-router";
+import { withLoading } from "../../../hooks/WithLoading";
+import { saveAccessToken } from "../../../services/auth/auth";
+import { fetchSaveRedProfile } from "../../../services/api/api";
+import { history } from "../../../services/history/history";
 import {
   FormControlLabel,
   Checkbox,
@@ -12,40 +12,40 @@ import {
   createStyles,
   withStyles,
   Theme,
-  Paper,
-} from '@material-ui/core';
-import { RedProfile } from '../../../types/RedProfile';
-import { profileFetchStart } from '../../../redux/user/actions';
+  Paper
+} from "@material-ui/core";
+import { RedProfile } from "../../../types/RedProfile";
+import { profileFetchStart } from "../../../redux/user/actions";
 
-type RouteParams = {
+interface RouteParams {
   accessToken: string;
-};
+}
 
 const styles = (theme: Theme) =>
   createStyles({
     paragraph: {
-      fontWeight: 300,
+      fontWeight: 300
     },
     paragraphBelowSubheader: {
-      marginTop: '0.3em',
-      fontWeight: 300,
+      marginTop: "0.3em",
+      fontWeight: 300
     },
     subHeader: {
-      marginBottom: 0,
+      marginBottom: 0
     },
     error: {
-      backgroundColor: theme.palette.error.main,
-    },
+      backgroundColor: theme.palette.error.main
+    }
   });
 
-type Props = {
+interface Props {
   classes: {
     paragraph: string;
     paragraphBelowSubheader: string;
     subHeader: string;
     error: string;
   };
-};
+}
 
 export const SignUpExisting = withStyles(styles)(
   (props: RouteComponentProps<RouteParams> & Props) => {
@@ -69,7 +69,7 @@ export const SignUpExisting = withStyles(styles)(
           saveAccessToken(accessToken);
         } catch (err) {
           return setErrorMsg(
-            'Sorry, this address seems to be invalid. Please contact career@redi-school.org to receive your invite again.'
+            "Sorry, this address seems to be invalid. Please contact career@redi-school.org to receive your invite again."
           );
         }
         try {
@@ -78,7 +78,7 @@ export const SignUpExisting = withStyles(styles)(
           setLoading(false);
         } catch (err) {
           return setErrorMsg(
-            'Sorry, the link you used seems to have expired. Please contact career@redi-school.org to receive a new one.'
+            "Sorry, the link you used seems to have expired. Please contact career@redi-school.org to receive a new one."
           );
         }
       };
@@ -93,7 +93,7 @@ export const SignUpExisting = withStyles(styles)(
             <Paper className={props.classes.error}>
               <p>{errorMsg}</p>
               <p>
-                You can also go here{' '}
+                You can also go here{" "}
                 <a href="/front/login">to log in if you have a user.</a>
               </p>
             </Paper>
@@ -107,7 +107,7 @@ export const SignUpExisting = withStyles(styles)(
           )}
           {!loading && !errorMsg && (
             <>
-              {profile && profile.userType === 'mentee' && (
+              {profile && profile.userType === "mentee" && (
                 <>
                   <h2>Data protection</h2>
                   <p className={classes.paragraph}>
@@ -196,7 +196,7 @@ export const SignUpExisting = withStyles(styles)(
                   </p>
                 </>
               )}
-              {profile && profile.userType === 'mentor' && (
+              {profile && profile.userType === "mentor" && (
                 <>
                   <h2>Data protection</h2>
                   <p className={classes.paragraph}>
@@ -299,7 +299,7 @@ export const SignUpExisting = withStyles(styles)(
               />
               <Button
                 onClick={() => {
-                  history.push('/front/signup/existing-reset-password');
+                  history.push("/front/signup/existing-reset-password");
                 }}
                 color="primary"
                 variant="contained"

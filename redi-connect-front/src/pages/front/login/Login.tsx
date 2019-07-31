@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { LoggedOutLayout } from '../../../layouts/LoggedOutLayout';
-import * as Yup from 'yup';
+import React, { useState } from "react";
+import { LoggedOutLayout } from "../../../layouts/LoggedOutLayout";
+import * as Yup from "yup";
 import {
   TextField,
   InputAdornment,
@@ -8,21 +8,21 @@ import {
   Paper,
   Theme,
   createStyles,
-  withStyles,
-} from '@material-ui/core';
-import { Lock as LockIcon, Person as PersonIcon } from '@material-ui/icons';
-import { Formik, FormikProps, FormikActions, FormikValues } from 'formik';
-import { history } from '../../../services/history/history';
-import { login, fetchSaveRedProfile } from '../../../services/api/api';
-import { saveAccessToken } from '../../../services/auth/auth';
+  withStyles
+} from "@material-ui/core";
+import { Lock as LockIcon, Person as PersonIcon } from "@material-ui/icons";
+import { Formik, FormikProps, FormikActions, FormikValues } from "formik";
+import { history } from "../../../services/history/history";
+import { login, fetchSaveRedProfile } from "../../../services/api/api";
+import { saveAccessToken } from "../../../services/auth/auth";
 
 const styles = (theme: Theme) =>
   createStyles({
     loginError: {
       padding: theme.spacing.unit,
       backgroundColor: theme.palette.error.main,
-      color: 'white',
-    },
+      color: "white"
+    }
   });
 
 interface LoginFormValues {
@@ -31,24 +31,24 @@ interface LoginFormValues {
 }
 
 const initialValues: LoginFormValues = {
-  username: '',
-  password: '',
+  username: "",
+  password: ""
 };
 
 const validationSchema = Yup.object({
   username: Yup.string()
     .email()
     .required()
-    .label('Email')
+    .label("Email")
     .max(255),
   password: Yup.string()
     .required()
-    .label('Password')
-    .max(255),
+    .label("Password")
+    .max(255)
 });
 
 export const Login = () => {
-  const [loginError, setLoginError] = useState<string>('');
+  const [loginError, setLoginError] = useState<string>("");
 
   const submitForm = async (
     values: FormikValues,
@@ -59,9 +59,9 @@ export const Login = () => {
       const accessToken = await login(formValues.username, formValues.password);
       saveAccessToken(accessToken);
       await fetchSaveRedProfile(accessToken);
-      history.push('/app/dashboard');
+      history.push("/app/dashboard");
     } catch (err) {
-      setLoginError('Invalid username or password');
+      setLoginError("Invalid username or password");
     }
     actions.setSubmitting(false);
   };
@@ -95,7 +95,7 @@ const Form = withStyles(styles)(
       isValid,
       isSubmitting,
       setFieldTouched,
-      submitForm,
+      submitForm
     } = props;
 
     const change = (name: any, e: any) => {
@@ -115,17 +115,17 @@ const Form = withStyles(styles)(
             id="username"
             name="username"
             type="email"
-            helperText={touched.username ? errors.username : ''}
+            helperText={touched.username ? errors.username : ""}
             error={touched.username && Boolean(errors.username)}
             label="Username (your email address)*"
             value={username}
-            onChange={change.bind(null, 'username')}
+            onChange={change.bind(null, "username")}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
                   <PersonIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             fullWidth
             margin="normal"
@@ -135,17 +135,17 @@ const Form = withStyles(styles)(
             id="password"
             name="password"
             type="password"
-            helperText={touched.password ? errors.password : ''}
+            helperText={touched.password ? errors.password : ""}
             error={touched.password && Boolean(errors.password)}
             label="Password*"
             value={password}
-            onChange={change.bind(null, 'password')}
+            onChange={change.bind(null, "password")}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
                   <LockIcon />
                 </InputAdornment>
-              ),
+              )
             }}
             fullWidth
             margin="normal"
