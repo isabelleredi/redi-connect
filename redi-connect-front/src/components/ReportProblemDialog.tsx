@@ -35,18 +35,18 @@ import {
 } from "../redux/mentoringSessions/actions";
 import {
   MentoringSessionsClearAsyncResultAction,
-  MentoringSessionsCreateStartAction,
-} from '../redux/mentoringSessions/types';
-import { RootState } from '../redux/types';
-import { FormSubmitResult } from '../types/FormSubmitResult';
-import { RedMentoringSession } from '../types/RedMentoringSession';
-import { FullScreenCircle } from '../hooks/WithLoading';
-import { ReportProblemBtnProps } from './ReportProblemBtn';
-import { reportProblem } from '../services/api/api';
-import { RedProfile } from '../types/RedProfile';
-import { RedProblemReportDto } from '../types/RedProblemReportDto';
-import { profilesFetchOneStart } from '../redux/profiles/actions';
-import { getRedProfile } from '../services/auth/auth';
+  MentoringSessionsCreateStartAction
+} from "../redux/mentoringSessions/types";
+import { RootState } from "../redux/types";
+import { FormSubmitResult } from "../types/FormSubmitResult";
+import { RedMentoringSession } from "../types/RedMentoringSession";
+import { FullScreenCircle } from "../hooks/WithLoading";
+import { ReportProblemBtnProps } from "./ReportProblemBtn";
+import { reportProblem } from "../services/api/api";
+import { RedProfile } from "../types/RedProfile";
+import { RedProblemReportDto } from "../types/RedProblemReportDto";
+import { profilesFetchOneStart } from "../redux/profiles/actions";
+import { getRedProfile } from "../services/auth/auth";
 
 interface ReportProblemDialogProps {
   redProfileId: string;
@@ -228,7 +228,7 @@ const Form = withStyles(styles)(
       setFieldTouched(name, true, false);
     };
 
-    const { userType } = getRedProfile()
+    const { userType } = getRedProfile();
 
     return (
       <>
@@ -261,7 +261,7 @@ const Form = withStyles(styles)(
               rows="4"
               onChange={change.bind(null, "problemDescription")}
             />
-            {userType === 'mentor' && (
+            {userType === "mentor" && (
               <>
                 <FormControlLabel
                   label="Immediately cancel mentorship with this mentee"
