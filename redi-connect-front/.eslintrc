@@ -6,31 +6,26 @@
   },
   "env": {
     "browser": true,
-    "jest/globals": true
+    "jest/globals": true,
+    "node": true,
+    "es6": true
   },
-  "plugins": ["@typescript-eslint", "react-hooks", "jest", "prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "plugins": ["@typescript-eslint", "react", "jest", "prettier"],
   "extends": [
-    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
   ],
   "rules": {
-    "import/named": "off",
-    "import/export": "off",
-    "import/prefer-default-export": "off",
-    "@typescript-eslint/no-unused-vars": "error",
-    "no-unused-expressions": ["error", {
-      "allowShortCircuit": true,
-      "allowTernary": true
-    }],
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "react/jsx-filename-extension": ["warn", {
-      "extensions": [".jsx", ".tsx"]
-    }],
     "react/prop-types": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": 0
   }
 }
